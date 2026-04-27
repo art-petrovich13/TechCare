@@ -4,6 +4,10 @@ import type {
     Employee, CreateEmployeeDto, Service, CreateServiceDto,
     Order, CreateOrderDto
 } from "../types";
+import type {
+  Summary, OrdersByPeriod, TopService,
+  EmployeeLoad, DeviceTypeStat, ReportData
+} from '../types';
 
 const BASE_URL = "https://localhost:7238/api";
 
@@ -39,3 +43,24 @@ export const getOrders = () => api.get<Order[]>("/orders");
 export const createOrder = (dto: CreateOrderDto) => api.post<Order>("/orders", dto);
 export const updateOrder = (id: number, dto: CreateOrderDto) => api.put(`/orders/${id}`, dto);
 export const deleteOrder = (id: number) => api.delete(`/orders/${id}`);
+
+export const getSummary = (from?: string, to?: string) =>
+  api.get<Summary>('/analytics/summary', { params: { from, to } });
+
+export const getOrdersByMonth = (year?: number) =>
+  api.get<OrdersByPeriod[]>('/analytics/orders-by-month', { params: { year } });
+
+export const getOrdersByDay = (from: string, to: string) =>
+  api.get<OrdersByPeriod[]>('/analytics/orders-by-day', { params: { from, to } });
+
+export const getTopServices = () =>
+  api.get<TopService[]>('/analytics/top-services');
+
+export const getEmployeeLoad = () =>
+  api.get<EmployeeLoad[]>('/analytics/employee-load');
+
+export const getDeviceTypes = () =>
+  api.get<DeviceTypeStat[]>('/analytics/device-types');
+
+export const getReport = (from: string, to: string) =>
+  api.get<ReportData>('/analytics/report', { params: { from, to } });

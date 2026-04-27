@@ -48,6 +48,8 @@ public class AppDbContext : DbContext
             e.Property(x => x.EmployeeId).HasColumnName("employee_id");
             e.Property(x => x.CreatedAt).HasColumnName("created_at");
             e.Property(x => x.UpdatedAt).HasColumnName("updated_at");
+            e.Property(x => x.TotalPrice).HasColumnName("total_price");    
+            e.Property(x => x.CompletedAt).HasColumnName("completed_at");  
             e.HasOne(o => o.Device)
              .WithMany(d => d.Orders)
              .HasForeignKey(o => o.DeviceId);

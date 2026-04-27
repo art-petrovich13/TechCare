@@ -73,6 +73,8 @@ export interface Order {
     status: string;
     createdAt: string;
     updatedAt: string;
+    totalPrice:   number;    
+    completedAt?: string;
 }
 
 export interface CreateOrderDto {
@@ -80,6 +82,7 @@ export interface CreateOrderDto {
     employeeId?: number;
     description: string;
     status: string;
+    totalPrice: number;
 }
 
 // Статусы заявок
@@ -99,3 +102,49 @@ export const STATUS_COLORS: Record<string, string> = {
     done: '#10b981',
     cancelled: '#ef4444',
 };
+
+export interface Summary {
+  totalOrders:          number;
+  completedOrders:      number;
+  inProgressOrders:     number;
+  newOrders:            number;
+  cancelledOrders:      number;
+  totalRevenue:         number;
+  avgOrderPrice:        number;
+  avgRepairDays:        number;
+  totalClients:         number;
+  newClientsThisPeriod: number;
+}
+
+export interface OrdersByPeriod {
+  label:   string;
+  count:   number;
+  revenue: number;
+}
+
+export interface TopService {
+  serviceName:  string;
+  usageCount:   number;
+  totalRevenue: number;
+}
+
+export interface EmployeeLoad {
+  employeeName:    string;
+  totalOrders:     number;
+  completedOrders: number;
+  totalRevenue:    number;
+}
+
+export interface DeviceTypeStat {
+  deviceType: string;
+  count:      number;
+}
+
+export interface ReportData {
+  period:       string;
+  summary:      Summary;
+  byMonth:      OrdersByPeriod[];
+  topServices:  TopService[];
+  employeeLoad: EmployeeLoad[];
+  deviceTypes:  DeviceTypeStat[];
+}

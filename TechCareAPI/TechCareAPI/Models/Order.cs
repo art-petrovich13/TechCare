@@ -7,8 +7,10 @@ public class Order
     public int? EmployeeId { get; set; }
     public string Description { get; set; } = string.Empty;
     public string Status { get; set; } = "new";
+    public decimal TotalPrice { get; set; } = 0;
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime? CompletedAt { get; set; }
 
     public Device Device { get; set; } = null!;
     public Employee? Employee { get; set; }

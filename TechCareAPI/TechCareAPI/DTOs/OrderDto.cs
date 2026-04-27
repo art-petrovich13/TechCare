@@ -10,8 +10,10 @@ public class OrderDto
     public string? EmployeeName { get; set; }
     public string Description { get; set; } = string.Empty;
     public string Status { get; set; } = "new";
+    public decimal TotalPrice { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
+    public DateTime? CompletedAt { get; set; }
 }
 
 public class CreateOrderDto
@@ -20,4 +22,5 @@ public class CreateOrderDto
     public int? EmployeeId { get; set; }
     public string Description { get; set; } = string.Empty;
     public string Status { get; set; } = "new";
+    public decimal TotalPrice { get; set; } = 0;
 }

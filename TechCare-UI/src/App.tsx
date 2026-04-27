@@ -7,6 +7,7 @@ import DevicesPage from "./pages/DevicesPage";
 import OrdersPage from "./pages/OrdersPage";
 import EmployeesPage from "./pages/EmployeesPage";
 import ServicesPage from "./pages/ServicesPage";
+import AnalyticsPage from './pages/AnalyticsPage';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
+          <Route path="analytics" element={<AnalyticsPage />} />
           <Route path="clients" element={<ClientsPage />} />
           <Route path="devices" element={<DevicesPage />} />
           <Route path="orders" element={<OrdersPage />} />

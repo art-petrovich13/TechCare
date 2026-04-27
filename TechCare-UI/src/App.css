@@ -28,9 +28,11 @@ body {
 }
 
 .sidebar-logo {
-  padding: 0 20px 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .sidebar-logo h2 {
@@ -67,6 +69,30 @@ body {
   background: rgba(96, 165, 250, 0.15);
   color: #60a5fa;
   border-left-color: #60a5fa;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+}
+
+.version {
+  color: #94a3b8;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+.api-status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #64748b;
+  font-size: 0.75rem;
 }
 
 .main-content {

@@ -31,7 +31,9 @@ public class OrdersController : ControllerBase
                 Description = o.Description,
                 Status = o.Status,
                 CreatedAt = o.CreatedAt,
-                UpdatedAt = o.UpdatedAt
+                UpdatedAt = o.UpdatedAt,
+                TotalPrice = o.TotalPrice,
+                CompletedAt = o.CompletedAt,
             }).ToListAsync();
         return Ok(list);
     }
@@ -55,7 +57,9 @@ public class OrdersController : ControllerBase
             Description = o.Description,
             Status = o.Status,
             CreatedAt = o.CreatedAt,
-            UpdatedAt = o.UpdatedAt
+            UpdatedAt = o.UpdatedAt,
+            TotalPrice = o.TotalPrice,
+            CompletedAt = o.CompletedAt,
         });
     }
 
@@ -88,9 +92,21 @@ public class OrdersController : ControllerBase
     {
         var order = await _db.Orders.FindAsync(id);
         if (order == null) return NotFound();
-        order.DeviceId = dto.DeviceId; order.EmployeeId = dto.EmployeeId;
-        order.Description = dto.Description; order.Status = dto.Status;
+
+        order.DeviceId = dto.DeviceId;
+        order.EmployeeId = dto.EmployeeId;
+        order.Description = dto.Description;
+        order.TotalPrice = dto.TotalPrice;  
         order.UpdatedAt = DateTime.UtcNow;
+
+        if (dto.Status == "done" && order.CompletedAt == null)
+            order.CompletedAt = DateTime.UtcNow;
+
+        if (dto.Status != "done")
+            order.CompletedAt = null;
+
+        order.Status = dto.Status;
+
         await _db.SaveChangesAsync();
         return NoContent();
     }
