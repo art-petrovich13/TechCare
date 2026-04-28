@@ -186,28 +186,7 @@ export default function AnalyticsPage() {
         </div>
       ) : (
         <>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-            gap: 16, marginBottom: 24
-          }}>
-            <KpiCard label="Заявок за период"
-              value={summary?.totalOrders ?? 0}
-              color="#3b82f6" />
-            <KpiCard label="Выручка за период"
-              value={`${(summary?.totalRevenue ?? 0).toLocaleString('ru-RU')} ₽`}
-              color="#10b981" />
-            <KpiCard label="Средний чек"
-              value={`${Math.round(summary?.avgOrderPrice ?? 0).toLocaleString('ru-RU')} ₽`}
-              color="#8b5cf6" />
-            <KpiCard label="Среднее время ремонта"
-              value={`${summary?.avgRepairDays ?? 0} дн.`}
-              color="#f59e0b" />
-            <KpiCard label="Новых клиентов"
-              value={summary?.newClientsThisPeriod ?? 0}
-              sub={`Всего в системе: ${summary?.totalClients ?? 0}`}
-              color="#06b6d4" />
-          </div>
+          
 
           <div style={{
             display: 'grid', gridTemplateColumns: '2fr 1fr',
